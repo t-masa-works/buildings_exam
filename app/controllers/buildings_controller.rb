@@ -1,5 +1,4 @@
 class BuildingsController < ApplicationController
-  before_action :set_building, only: %i[ show edit update destroy ]
 
   # GET /buildings or /buildings.json
   def index
@@ -8,6 +7,7 @@ class BuildingsController < ApplicationController
 
   # GET /buildings/1 or /buildings/1.json
   def show
+    set_building
   end
 
   # GET /buildings/new
@@ -17,6 +17,7 @@ class BuildingsController < ApplicationController
 
   # GET /buildings/1/edit
   def edit
+    set_building
   end
 
   # POST /buildings or /buildings.json
@@ -36,6 +37,7 @@ class BuildingsController < ApplicationController
 
   # PATCH/PUT /buildings/1 or /buildings/1.json
   def update
+    set_building
     respond_to do |format|
       if @building.update(building_params)
         format.html { redirect_to @building, notice: "Building was successfully updated." }
@@ -49,6 +51,7 @@ class BuildingsController < ApplicationController
 
   # DELETE /buildings/1 or /buildings/1.json
   def destroy
+    set_building
     @building.destroy
     respond_to do |format|
       format.html { redirect_to buildings_url, notice: "Building was successfully destroyed." }
