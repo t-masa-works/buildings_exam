@@ -14,11 +14,11 @@ class BuildingsController < ApplicationController
 
   def edit
     set_building
+    @building.stations.build
   end
 
   def create
     @building = Building.new(building_params)
-
     respond_to do |format|
       if @building.save
         format.html { redirect_to @building, notice: "保存に成功しました" }
@@ -32,7 +32,7 @@ class BuildingsController < ApplicationController
 
   def update
     set_building
-
+    @building.stations.clear
     respond_to do |format|
       if @building.update(building_params)
         format.html { redirect_to @building, notice: "編集に成功しました" }
@@ -60,6 +60,6 @@ class BuildingsController < ApplicationController
   end
 
   def building_params
-    params.require(:building).permit(:build, :price, :address, :age, :remarks, stations_attributes: [:line, :station, :distance, :_destroy])
+    params.require(:building).permit(:build, :price, :address, :age, :remarks, stations_attributes: %i[line station distance _destroy])
   end
 end
