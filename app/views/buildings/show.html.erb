@@ -1,29 +1,47 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Build:</strong>
+  <strong>物件名:</strong>
   <%= @building.build %>
 </p>
 
 <p>
-  <strong>Price:</strong>
-  <%= @building.price %>
+  <strong>賃料:</strong>
+  <%= @building.price %>円
 </p>
 
 <p>
-  <strong>Address:</strong>
+  <strong>住所:</strong>
   <%= @building.address %>
 </p>
 
 <p>
-  <strong>Age:</strong>
+  <strong>築年数:</strong>
   <%= @building.age %>
 </p>
 
 <p>
-  <strong>Remarks:</strong>
+  <strong>備考:</strong>
   <%= @building.remarks %>
 </p>
 
-<%= link_to 'Edit', edit_building_path(@building) %> |
-<%= link_to 'Back', buildings_path %>
+<hr>
+
+<% @building.stations.each.with_index(1) do |info, index| %>
+  <h3>最寄駅<%= index %></h3>
+  <p>
+    <strong>路線名 </strong>
+    <%= info.line %>
+  </p>
+  <p>
+    <strong>駅名</strong>
+    <%= info.station %>
+  </p>
+  <p>
+    <strong>徒歩分数</strong>
+    <%= info.distance %>分
+  </p>
+<% end %>
+
+<%= link_to '編集', edit_building_path(@building) %> |
+<%= link_to '戻る', buildings_path %>

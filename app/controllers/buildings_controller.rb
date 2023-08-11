@@ -24,7 +24,7 @@ class BuildingsController < ApplicationController
   # POST /buildings or /buildings.json
   def create
     @building = Building.new(building_params)
-
+    respond_to do |format|
       if @building.save
         format.html { redirect_to @building, notice: "Building was successfully created." }
         format.json { render :show, status: :created, location: @building }
@@ -71,3 +71,4 @@ class BuildingsController < ApplicationController
   def building_params
     params.require(:building).permit(:build, :price, :address, :age, :remarks, stations_attributes: [:line, :station, :distance, :_destroy])
   end
+end
