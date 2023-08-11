@@ -47,7 +47,6 @@ class BuildingsController < ApplicationController
   def destroy
     set_building
     @building.destroy
-
     respond_to do |format|
       format.html { redirect_to buildings_url, notice: "対象を削除しました" }
       format.json { head :no_content }
