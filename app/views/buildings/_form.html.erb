@@ -37,11 +37,12 @@
   </div>
 
 <%= form.fields_for :stations, local: true do |station| %>
-   <div class="field">
+  <div class="field">
+    <h3>最寄り駅</h3>
     <%= station.label :line, '路線名' %>
     <%= station.text_field :line %>
   </div>
-   <div class="field">
+  <div class="field">
     <%= station.label :station, '駅名' %>
     <%= station.text_field :station %>
   </div>
@@ -51,6 +52,6 @@
   </div>
   <% end %>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit '登録する' %>
   </div>
 <% end %>
