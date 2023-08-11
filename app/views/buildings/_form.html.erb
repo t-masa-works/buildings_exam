@@ -1,4 +1,4 @@
-<%= form_with(model: building, local: true) do |form| %>
+<%= form_with(model: @building, local: true) do |form| %>
   <% if building.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(building.errors.count, "error") %> prohibited this building from being saved:</h2>
@@ -12,30 +12,44 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :build %>
+    <%= form.label :build, '物件名'%>
     <%= form.text_field :build %>
   </div>
 
   <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price %>
+    <p><%= form.label :price, '賃料' %>
+    <%= form.text_field :price %>円</p>
   </div>
 
   <div class="field">
-    <%= form.label :address %>
+    <%= form.label :address, '住所' %>
     <%= form.text_field :address %>
   </div>
 
   <div class="field">
-    <%= form.label :age %>
-    <%= form.text_field :age %>
+    <p><%= form.label :age ,'築年数' %>
+    <%= form.text_field :age %></p>
   </div>
 
   <div class="field">
-    <%= form.label :remarks %>
+    <%= form.label :remarks, '備考' %>
     <%= form.text_area :remarks %>
   </div>
 
+<%= form.fields_for :stations, local: true do |station| %>
+   <div class="field">
+    <%= station.label :line, '路線名' %>
+    <%= station.text_field :line %>
+  </div>
+   <div class="field">
+    <%= station.label :station, '駅名' %>
+    <%= station.text_field :station %>
+  </div>
+    <div class="field">
+      <p><%= station.label :distance, '徒歩分数' %>
+      <%= station.text_field :distance %>分</p>
+  </div>
+  <% end %>
   <div class="actions">
     <%= form.submit %>
   </div>

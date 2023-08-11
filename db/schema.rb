@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_10_142152) do
+ActiveRecord::Schema.define(version: 2023_08_11_002819) do
 
   create_table "buildings", force: :cascade do |t|
     t.string "build"
@@ -26,11 +26,11 @@ ActiveRecord::Schema.define(version: 2023_08_10_142152) do
     t.string "line"
     t.string "station"
     t.string "distance"
-    t.integer "buildings_id", null: false
+    t.integer "building_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["buildings_id"], name: "index_stations_on_buildings_id"
+    t.index ["building_id"], name: "index_stations_on_building_id"
   end
 
-  add_foreign_key "stations", "buildings", column: "buildings_id"
+  add_foreign_key "stations", "buildings"
 end
