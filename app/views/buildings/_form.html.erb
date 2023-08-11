@@ -2,7 +2,6 @@
   <% if building.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(building.errors.count, "error") %> prohibited this building from being saved:</h2>
-
       <ul>
         <% building.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -54,6 +53,10 @@
   </div>
   <% end %>
   <div class="actions">
+  <% if @building.new_record? %>
     <%= form.submit '登録する' %>
+  <% else %>
+    <%= form.submit '更新する' %>
+  <% end %>
   </div>
 <% end %>
